@@ -1,4 +1,5 @@
 import styles from './styles'
+import api from 'services/api'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { StackActions, NavigationActions } from 'react-navigation'
@@ -15,15 +16,36 @@ export default class Welcome extends Component {
     }).isRequired
   }
 
-  signIn = () => {
-    const resetAction = StackActions.reset({
-      index: 0,
-      actions: [
-        NavigationActions.navigate({routeName: 'User'})
-      ]
-    })
+  state = {
+    username: ''
+  }
 
-    this.props.navigation.dispatch(resetAction)
+  checkUserExists = async username => {
+    const user = await api.get(`/users/${username}`)
+    return user
+  }
+
+  signIn = async () => {
+    const { username } = this.state
+
+    if (!username) {
+      return
+    }
+
+    try {
+      await this.checkUserExists(username)
+
+      const resetAction = StackActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({routeName: 'User'})
+        ]
+      })
+
+      this.props.navigation.dispatch(resetAction)
+    } catch (err) {
+      // error
+    }
   }
 
   render() {
@@ -38,11 +60,13 @@ export default class Welcome extends Component {
 
         <View style={styles.form}>
           <TextInput
+            autoCorrect={false}
             style={styles.input}
             autoCapitalize="none"
-            autoCorrect={false}
+            value={this.state.username}
             placeholder="Digite o seu usuário"
             underlineColorAndroid="rgba(0, 0, 0, 0)"
+            onChangeText={username => this.setState({ username })}
           />
 
           <TouchableOpacity style={styles.button} onPress={this.signIn}>
