@@ -1,4 +1,5 @@
 import styles from './styles'
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { StackActions, NavigationActions } from 'react-navigation'
 import { View, Text, TextInput, TouchableOpacity, StatusBar } from 'react-native'
@@ -6,6 +7,12 @@ import { View, Text, TextInput, TouchableOpacity, StatusBar } from 'react-native
 export default class Welcome extends Component {
   static navigationOptions = {
     header: null
+  }
+
+  static propTypes = {
+    navigation: PropTypes.shape({
+      dispatch: PropTypes.func
+    }).isRequired
   }
 
   signIn = () => {
