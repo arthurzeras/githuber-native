@@ -42,6 +42,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     color: colors.white
+  },
+  error: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: colors.danger,
+    marginTop: metrics.baseMargin
   }
 })
 

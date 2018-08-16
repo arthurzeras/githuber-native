@@ -3,7 +3,14 @@ import api from 'services/api'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { StackActions, NavigationActions } from 'react-navigation'
-import { View, Text, TextInput, TouchableOpacity, StatusBar } from 'react-native'
+import {
+  View,
+  Text,
+  TextInput,
+  StatusBar,
+  TouchableOpacity,
+  ActivityIndicator
+} from 'react-native'
 
 export default class Welcome extends Component {
   static navigationOptions = {
@@ -17,7 +24,9 @@ export default class Welcome extends Component {
   }
 
   state = {
-    username: ''
+    username: '',
+    loading: false,
+    errorMessage: null
   }
 
   checkUserExists = async username => {
@@ -32,6 +41,8 @@ export default class Welcome extends Component {
       return
     }
 
+    this.setState({ loading: true })
+
     try {
       await this.checkUserExists(username)
 
@@ -45,6 +56,7 @@ export default class Welcome extends Component {
       this.props.navigation.dispatch(resetAction)
     } catch (err) {
       // error
+      this.setState({ loading: false, errorMessage: 'Usuário não existe' })
     }
   }
 
@@ -58,6 +70,11 @@ export default class Welcome extends Component {
           Para continuar, informe o seu usuário do Github.
         </Text>
 
+        {
+          !!this.state.errorMessage
+            && <Text style={styles.error}>{this.state.errorMessage}</Text>
+        }
+
         <View style={styles.form}>
           <TextInput
             autoCorrect={false}
@@ -70,7 +87,11 @@ export default class Welcome extends Component {
           />
 
           <TouchableOpacity style={styles.button} onPress={this.signIn}>
-            <Text style={styles.buttonText}>Prosseguir</Text>
+            {
+              this.state.loading
+                ? <ActivityIndicator size="small" color="#FFF" />
+                : <Text style={styles.buttonText}>Prosseguir</Text>
+            }
           </TouchableOpacity>
         </View>
       </View>
