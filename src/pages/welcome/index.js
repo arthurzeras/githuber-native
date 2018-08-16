@@ -1,34 +1,48 @@
-import React from 'react'
 import styles from './styles'
+import React, { Component } from 'react'
+import { StackActions, NavigationActions } from 'react-navigation'
 import { View, Text, TextInput, TouchableOpacity, StatusBar } from 'react-native'
 
-const Welcome = () => (
-  <View style={styles.container}>
-    <StatusBar barStyle="light-content"/>
+export default class Welcome extends Component {
+  static navigationOptions = {
+    header: null
+  }
 
-    <Text style={styles.title}>Bem-vindo</Text>
-    <Text style={styles.text}>
-      Para continuar, informe o seu usuário do Github.
-    </Text>
+  signIn = () => {
+    const resetAction = StackActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({routeName: 'User'})
+      ]
+    })
 
-    <View style={styles.form}>
-      <TextInput
-        style={styles.input}
-        autoCapitalize="none"
-        autoCorrect={false}
-        placeholder="Digite o seu usuário"
-        underlineColorAndroid="rgba(0, 0, 0, 0)"
-      />
+    this.props.navigation.dispatch(resetAction)
+  }
 
-      <TouchableOpacity style={styles.button} onPress={() => {}}>
-        <Text style={styles.buttonText}>Prosseguir</Text>
-      </TouchableOpacity>
-    </View>
-  </View>
-)
+  render() {
+    return (
+      <View style={styles.container}>
+        <StatusBar barStyle="light-content"/>
 
-Welcome.navigationOptions = {
-  header: null
+        <Text style={styles.title}>Bem-vindo</Text>
+        <Text style={styles.text}>
+          Para continuar, informe o seu usuário do Github.
+        </Text>
+
+        <View style={styles.form}>
+          <TextInput
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
+            placeholder="Digite o seu usuário"
+            underlineColorAndroid="rgba(0, 0, 0, 0)"
+          />
+
+          <TouchableOpacity style={styles.button} onPress={this.signIn}>
+            <Text style={styles.buttonText}>Prosseguir</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    )
+  }
 }
-
-export default Welcome
