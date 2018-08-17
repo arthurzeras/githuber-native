@@ -18,7 +18,8 @@ export default class Organizations extends Component {
 
   state = {
     data: [],
-    loading: true
+    loading: true,
+    refreshing: false
   }
 
   componentDidMount() {
@@ -26,12 +27,15 @@ export default class Organizations extends Component {
   }
 
   loadOrganizations = async () => {
+    this.setState({ refreshing: true })
+
     const username = await AsyncStorage.getItem('@Githuber:username')
     const res = await api.get(`/users/${username}/orgs`)
 
     this.setState({
       data: res.data,
-      loading: false
+      loading: false,
+      refreshing: false
     })
   }
 
@@ -40,6 +44,8 @@ export default class Organizations extends Component {
       numColumns={2}
       data={this.state.data}
       renderItem={this.renderListItem}
+      onRefresh={this.loadOrganizations}
+      refreshing={this.state.refreshing}
       keyExtractor={item => String(item.id)}
       columnWrapperStyle={styles.columnContainer}
     />
