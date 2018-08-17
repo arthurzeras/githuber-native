@@ -1,10 +1,15 @@
-import React from 'react'
 import { View } from 'react-native'
+import React, { Component } from 'react'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
-const Organizations = () => <View/>
+export default class Organizations extends Component {
+  static navigationOptions = {
+    tabBarIcon: ({ tintColor }) => <Icon name="building" size={20} color={tintColor} />
+  }
 
-Organizations.navigationOptions = {
-  title: 'Organizações'
+  render () {
+    return (
+      <View/>
+    )
+  }
 }
-
-export default Organizations

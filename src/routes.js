@@ -1,4 +1,5 @@
 import React from 'react'
+import { colors } from 'styles'
 import Welcome from 'pages/welcome'
 import Repositories from 'pages/repositories'
 import Organizations from 'pages/organizations'
@@ -9,7 +10,23 @@ const createNavigator = (isLogged = false) => createStackNavigator(
   {
     Welcome,
     User: {
-      screen: createBottomTabNavigator({Repositories, Organizations})
+      screen: createBottomTabNavigator(
+        {
+          Repositories,
+          Organizations
+        },
+        {
+          tabBarOptions: {
+            showIcon: true,
+            showLabel: false,
+            activeTintColor: colors.white,
+            inactiveTintColor: colors.whiteTransparent,
+            style: {
+              backgroundColor: colors.secondary
+            }
+          }
+        }
+      )
     }
   },
   {

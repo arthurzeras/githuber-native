@@ -1,10 +1,15 @@
-import React from 'react'
 import { View } from 'react-native'
+import React, { Component } from 'react'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
-const Repositories = () => <View/>
+export default class Repositories extends Component {
+  static navigationOptions = {
+    tabBarIcon: ({ tintColor }) => <Icon name="list-alt" size={20} color={tintColor} />
+  }
 
-Repositories.navigationOptions = {
-  title: 'Repositórios'
+  render () {
+    return (
+      <View/>
+    )
+  }
 }
-
-export default Repositories
