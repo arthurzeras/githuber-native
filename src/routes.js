@@ -1,7 +1,12 @@
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
+import React from 'react'
+import {
+  createStackNavigator,
+  createBottomTabNavigator
+} from 'react-navigation'
 import Welcome from 'pages/welcome'
 import Repositories from 'pages/repositories'
 import Organizations from 'pages/organizations'
+import HeaderRight from 'components/HeaderRight'
 
 const createNavigator = (isLogged = false) => createStackNavigator(
   {
@@ -9,7 +14,16 @@ const createNavigator = (isLogged = false) => createStackNavigator(
     User: {
       screen: createBottomTabNavigator({
         Repositories: {
-          screen: createStackNavigator({Repositories})
+          screen: createStackNavigator(
+            {
+              Repositories
+            },
+            {
+              navigationOptions: {
+                headerRight: <HeaderRight/>
+              }
+            }
+          )
         },
         Organizations: {
           screen: createStackNavigator({Organizations})
