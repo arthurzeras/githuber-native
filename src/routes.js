@@ -8,9 +8,14 @@ const createNavigator = (isLogged = false) => createStackNavigator(
     Welcome: { screen: Welcome },
     User: {
       screen: createBottomTabNavigator({
-        Repositories,
-        Organizations
-      })
+        Repositories: {
+          screen: createStackNavigator({Repositories})
+        },
+        Organizations: {
+          screen: createStackNavigator({Organizations})
+        },
+      }),
+      navigationOptions: {header: null}
     },
   },
   {
