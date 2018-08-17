@@ -1,6 +1,7 @@
 import styles from './styles'
 import api from 'services/api'
 import React, { Component } from 'react'
+import RepositoryItem from './components/RepositoryItem'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import {
   Text,
@@ -39,13 +40,13 @@ export default class Repositories extends Component {
       data={this.state.data}
       keyExtractor={item => String(item.id)}
       renderItem={this.renderListItem}
-    >
-
-    </FlatList>
+    />
   )
 
   renderListItem = ({ item }) => (
-    <Text>{item.full_name}</Text>
+    <RepositoryItem
+      repository={item}
+    />
   )
 
   render () {
