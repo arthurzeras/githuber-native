@@ -14,9 +14,19 @@ const createNavigator = (isLogged = false) => createStackNavigator(
   },
   {
     initialRouteName: isLogged ? 'User' : 'Welcome',
-    navigationOptions: {
-      title: '?',
-      headerRight: <HeaderRight/>
+    navigationOptions: ({ navigation }) => {
+      const nop = {title: '', headerRight: <HeaderRight/>}
+
+      switch (navigation.state.routes[navigation.state.index].routeName) {
+        case 'Repositories':
+          nop.title = 'Repositórios'
+          break
+        case 'Organizations':
+          nop.title = 'Organizações'
+          break
+      }
+
+      return nop
     }
   }
 )
