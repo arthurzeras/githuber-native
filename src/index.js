@@ -9,6 +9,8 @@ export default class App extends Component {
   }
 
   async componentDidMount() {
+    // AsyncStorage.clear()
+
     const username = await AsyncStorage.getItem('@Githuber:username')
     this.appLoaded(username)
   }

@@ -61,7 +61,6 @@ export default class Welcome extends Component {
 
       this.props.navigation.dispatch(resetAction)
     } catch (err) {
-      // error
       this.setState({ loading: false, errorMessage: 'Usuário não existe' })
     }
   }
