@@ -7,6 +7,10 @@ const styles = StyleSheet.create({
   },
   loading: {
     marginTop: metrics.basePadding
+  },
+  columnContainer: {
+    marginHorizontal: metrics.basePadding,
+    justifyContent: 'space-between'
   }
 })
 

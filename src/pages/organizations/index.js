@@ -2,6 +2,7 @@ import styles from './styles'
 import api from 'services/api'
 import React, { Component } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import OrganizationItem from './components/OrganizationItem'
 import {
   Text,
   View,
@@ -36,13 +37,15 @@ export default class Organizations extends Component {
 
   renderList = () => (
     <FlatList
+      numColumns={2}
       data={this.state.data}
-      keyExtractor={item => String(item.id)}
       renderItem={this.renderListItem}
+      keyExtractor={item => String(item.id)}
+      columnWrapperStyle={styles.columnContainer}
     />
   )
 
-  renderListItem = ({ item }) => <Text>{ item.login }</Text>
+  renderListItem = ({ item }) => <OrganizationItem organization={item} />
 
   render () {
     return (
