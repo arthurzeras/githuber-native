@@ -43,11 +43,7 @@ export default class Repositories extends Component {
     />
   )
 
-  renderListItem = ({ item }) => (
-    <RepositoryItem
-      repository={item}
-    />
-  )
+  renderListItem = ({ item }) => <RepositoryItem repository={item}/>
 
   render () {
     return (
