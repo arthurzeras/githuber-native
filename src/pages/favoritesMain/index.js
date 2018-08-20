@@ -1,4 +1,5 @@
 import styles from './styles'
+import { colors } from 'styles'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -13,8 +14,10 @@ import {
 
 export default class FavoritesMain extends Component {
   static navigationOptions = {
+    headerRight: null,
+    headerTintColor: colors.white,
     title: 'Repositórios Favoritos',
-    headerRight: null
+    headerStyle: { backgroundColor: colors.secondary }
   }
 
   static propTypes = {
@@ -30,7 +33,7 @@ export default class FavoritesMain extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <StatusBar barStyle="dark-content"/>
+        <StatusBar barStyle="light-content"/>
 
         <View style={styles.content}>
           <Text style={styles.description}>

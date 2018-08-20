@@ -34,7 +34,7 @@ const createNavigator = (isLogged = false) => createStackNavigator(
     }
   },
   {
-    initialRouteName: isLogged ? 'User' : 'Welcome',
+    initialRouteName: isLogged ? 'User' : 'FavoritesMain',
     navigationOptions: ({ navigation }) => {
       const navop = {
         title: '',
