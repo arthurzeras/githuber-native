@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux'
-import repositories from './repositories'
+import favorites from './favorites'
 
-export default combineReducers({ repositories })
+export default combineReducers({ favorites })
