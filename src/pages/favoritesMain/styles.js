@@ -11,6 +11,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  error: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: colors.danger,
+    marginBottom: metrics.baseMargin
+  },
   description: {
     fontSize: 14,
     marginBottom: metrics.baseMargin
