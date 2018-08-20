@@ -1,16 +1,18 @@
 import styles from './styles'
 import React, { Component } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, StatusBar } from 'react-native'
 
 export default class Favorites extends Component {
   static navigationOptions = {
-    tabBarIcon: ({ tintColor }) => <Icon name="star" size={20} color={tintColor} />
+    title: 'Favoritos',
+    headerRight: null
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar barStyle="dark-content"/>
         <View style={styles.form}>
           <TextInput
             autoCorrect={false}

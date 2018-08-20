@@ -2,6 +2,7 @@ import styles from './styles'
 import api from 'services/api'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import Icon from 'react-native-vector-icons/FontAwesome'
 import { StackActions, NavigationActions } from 'react-navigation'
 import {
   View,
@@ -65,6 +66,10 @@ export default class Welcome extends Component {
     }
   }
 
+  navigateToFavorites = () => {
+    this.props.navigation.navigate('Favorites')
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -97,6 +102,14 @@ export default class Welcome extends Component {
                 ? <ActivityIndicator size="small" color="#FFF" />
                 : <Text style={styles.buttonText}>Prosseguir</Text>
             }
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.viewFavorites}>
+          <TouchableOpacity style={styles.buttonFavorites} onPress={this.navigateToFavorites}>
+            <Text style={styles.buttonText}>
+              <Icon name="star" size={14} color="#fff"/> Ver repositórios favoritos
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -10,10 +10,10 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation'
 const createNavigator = (isLogged = false) => createStackNavigator(
   {
     Welcome,
+    Favorites,
     User: {
       screen: createBottomTabNavigator(
         {
-          Favorites,
           Repositories,
           Organizations
         },
@@ -46,9 +46,6 @@ const createNavigator = (isLogged = false) => createStackNavigator(
             break
           case 'Organizations':
             navop.title = 'Organizações'
-            break
-          case 'Favorites':
-            navop.title = 'Favoritos'
             break
         }
       }

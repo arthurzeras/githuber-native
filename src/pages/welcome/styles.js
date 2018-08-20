@@ -49,6 +49,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: colors.danger,
     marginTop: metrics.baseMargin
+  },
+  viewFavorites: {
+    borderTopWidth: 1,
+    borderTopColor: colors.white,
+    marginTop: metrics.baseMargin
+  },
+  buttonFavorites: {
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: metrics.baseMargin,
+    borderRadius: metrics.baseRadius,
+    backgroundColor: colors.darkTransparent
   }
 })
 
