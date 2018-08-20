@@ -1,8 +1,11 @@
 import styles from './styles'
 import { colors } from 'styles'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import * as FavoritesActions from 'store/actions/favorites'
 import {
   View,
   Text,
@@ -12,7 +15,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 
-export default class FavoritesMain extends Component {
+class FavoritesMain extends Component {
   static navigationOptions = {
     headerRight: null,
     headerTintColor: colors.white,
@@ -21,13 +24,24 @@ export default class FavoritesMain extends Component {
   }
 
   static propTypes = {
-    navigation: PropTypes.shape({
-      navigate: PropTypes.func
-    }).isRequired
+    navigation: PropTypes.shape({ navigate: PropTypes.func }).isRequired,
+    addFavoriteRequest: PropTypes.func.isRequired
+  }
+
+  state = {
+    favoriteInput: ''
   }
 
   navigateToFavorites = () => {
     this.props.navigation.navigate('Favorites')
+  }
+
+  addFavorite = () => {
+    if (!this.state.favoriteInput.length) {
+      return false
+    } else {
+      this.props.addFavoriteRequest(this.state.favoriteInput)
+    }
   }
 
   render() {
@@ -44,15 +58,17 @@ export default class FavoritesMain extends Component {
               autoCorrect={false}
               style={styles.input}
               autoCapitalize="none"
+              value={this.state.favoriteInput}
               placeholder="usuário/repositório"
               underlineColorAndroid="transparent"
               placeholderTextColor="rgba(255, 255, 255, .4)"
+              onChangeText={value => this.setState({favoriteInput: value})}
             />
 
             <TouchableOpacity
-              onPress={() => {}}
-              style={styles.inputButton}
               activityOpacity={0.6}
+              style={styles.inputButton}
+              onPress={this.addFavorite}
             >
               <Text style={styles.buttonText}>
                 <Icon name="plus" size={20} color="#fff"/>
@@ -71,3 +87,7 @@ export default class FavoritesMain extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => bindActionCreators(FavoritesActions, dispatch)
+
+export default connect(null, mapDispatchToProps)(FavoritesMain)
