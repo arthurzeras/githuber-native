@@ -21,7 +21,8 @@ export default class Welcome extends Component {
 
   static propTypes = {
     navigation: PropTypes.shape({
-      dispatch: PropTypes.func
+      dispatch: PropTypes.func,
+      navigate: PropTypes.func
     }).isRequired
   }
 
@@ -67,7 +68,7 @@ export default class Welcome extends Component {
   }
 
   navigateToFavorites = () => {
-    this.props.navigation.navigate('Favorites')
+    this.props.navigation.navigate('FavoritesMain')
   }
 
   render() {

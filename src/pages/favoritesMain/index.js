@@ -1,4 +1,5 @@
 import styles from './styles'
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import {
@@ -14,6 +15,16 @@ export default class FavoritesMain extends Component {
   static navigationOptions = {
     title: 'Repositórios Favoritos',
     headerRight: null
+  }
+
+  static propTypes = {
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func
+    }).isRequired
+  }
+
+  navigateToFavorites = () => {
+    this.props.navigation.navigate('Favorites')
   }
 
   render() {
@@ -49,7 +60,7 @@ export default class FavoritesMain extends Component {
 
 
         <View style={styles.footer}>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={this.navigateToFavorites}>
             <Text style={styles.footerLink}>Meus favoritos (3)</Text>
           </TouchableOpacity>
         </View>
