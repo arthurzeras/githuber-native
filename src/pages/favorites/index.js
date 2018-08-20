@@ -2,7 +2,7 @@ import styles from './styles'
 import { colors } from 'styles'
 import React, { Component } from 'react'
 import { View, Text, FlatList } from 'react-native'
-import FavoriteItem from './components/FavoriteItem'
+import RepositoryItem from '../repositories/components/RepositoryItem'
 
 export default class Favorites extends Component {
   static navigationOptions = {
@@ -142,7 +142,7 @@ export default class Favorites extends Component {
     <FlatList
       data={this.state.favorites}
       keyExtractor={item => String(item.id)}
-      renderItem={({ item }) => <FavoriteItem favorite={item}/>}
+      renderItem={({ item }) => <RepositoryItem repository={item}/>}
     />
   )
 
