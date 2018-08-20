@@ -1,6 +1,9 @@
-import React, {Component} from 'react';
-import {AsyncStorage} from 'react-native';
+import React, {Component} from 'react'
+import {AsyncStorage} from 'react-native'
 import createNavigator from './routes'
+import { Provider } from 'react-redux'
+import store from 'store'
+
 
 export default class App extends Component {
   state = {
@@ -28,6 +31,10 @@ export default class App extends Component {
     }
 
     const Routes = createNavigator(this.state.userLogged)
-    return <Routes/>
+    return (
+      <Provider store={store}>
+        <Routes/>
+      </Provider>
+    )
   }
 }
