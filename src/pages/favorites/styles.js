@@ -16,12 +16,10 @@ const styles = StyleSheet.create({
     marginBottom: metrics.baseMargin
   },
   form: {
-    height: 50,
-    padding: 5,
     flexDirection: 'row',
     width: metrics.screenWidth,
+    padding: metrics.basePadding,
     justifyContent: 'space-between',
-    paddingHorizontal: metrics.basePadding,
     backgroundColor: colors.darkTransparent
   },
   input: {
