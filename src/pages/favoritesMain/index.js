@@ -10,7 +10,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 
-export default class Favorites extends Component {
+export default class FavoritesMain extends Component {
   static navigationOptions = {
     title: 'Repositórios Favoritos',
     headerRight: null

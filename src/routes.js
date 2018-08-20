@@ -1,8 +1,8 @@
 import React from 'react'
 import { colors } from 'styles'
 import Welcome from 'pages/welcome'
-import Favorites from 'pages/favorites'
 import Repositories from 'pages/repositories'
+import FavoritesMain from 'pages/favoritesMain'
 import Organizations from 'pages/organizations'
 import HeaderRight from 'components/HeaderRight'
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation'
@@ -10,7 +10,7 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation'
 const createNavigator = (isLogged = false) => createStackNavigator(
   {
     Welcome,
-    Favorites,
+    FavoritesMain,
     User: {
       screen: createBottomTabNavigator(
         {
@@ -32,7 +32,7 @@ const createNavigator = (isLogged = false) => createStackNavigator(
     }
   },
   {
-    initialRouteName: isLogged ? 'User' : 'Favorites',
+    initialRouteName: isLogged ? 'User' : 'Welcome',
     navigationOptions: ({ navigation }) => {
       const navop = {
         title: '',
