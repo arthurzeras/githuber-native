@@ -32,7 +32,7 @@ const createNavigator = (isLogged = false) => createStackNavigator(
     }
   },
   {
-    initialRouteName: isLogged ? 'User' : 'Welcome',
+    initialRouteName: isLogged ? 'User' : 'Favorites',
     navigationOptions: ({ navigation }) => {
       const navop = {
         title: '',

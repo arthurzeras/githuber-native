@@ -3,17 +3,26 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center'
+  },
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  description: {
+    fontSize: 14,
+    marginBottom: metrics.baseMargin
   },
   form: {
     height: 50,
     padding: 5,
-    alignSelf: 'stretch',
     flexDirection: 'row',
-    alignItems: 'center',
+    width: metrics.screenWidth,
     justifyContent: 'space-between',
-    backgroundColor: colors.primary,
-    paddingHorizontal: metrics.basePadding
+    paddingHorizontal: metrics.basePadding,
+    backgroundColor: colors.darkTransparent
   },
   input: {
     fontSize: 16,
@@ -22,6 +31,13 @@ const styles = StyleSheet.create({
   inputButton: {
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  footer: {
+    paddingBottom: metrics.basePadding
+  },
+  footerLink: {
+    fontSize: 15,
+    fontWeight: 'bold'
   }
 })
 
