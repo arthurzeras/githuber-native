@@ -1,6 +1,7 @@
 import React from 'react'
 import { colors } from 'styles'
 import Welcome from 'pages/welcome'
+import Favorites from 'pages/favorites'
 import Repositories from 'pages/repositories'
 import Organizations from 'pages/organizations'
 import HeaderRight from 'components/HeaderRight'
@@ -12,6 +13,7 @@ const createNavigator = (isLogged = false) => createStackNavigator(
     User: {
       screen: createBottomTabNavigator(
         {
+          Favorites,
           Repositories,
           Organizations
         },
@@ -32,7 +34,7 @@ const createNavigator = (isLogged = false) => createStackNavigator(
   {
     initialRouteName: isLogged ? 'User' : 'Welcome',
     navigationOptions: ({ navigation }) => {
-      const nop = {
+      const navop = {
         title: '',
         headerRight: <HeaderRight navigation={navigation} />
       }
@@ -40,15 +42,18 @@ const createNavigator = (isLogged = false) => createStackNavigator(
       if (navigation.state.routes) {
         switch (navigation.state.routes[navigation.state.index].routeName) {
           case 'Repositories':
-            nop.title = 'Repositórios'
+            navop.title = 'Repositórios'
             break
           case 'Organizations':
-            nop.title = 'Organizações'
+            navop.title = 'Organizações'
+            break
+          case 'Favorites':
+            navop.title = 'Favoritos'
             break
         }
       }
 
-      return nop
+      return navop
     }
   }
 )
