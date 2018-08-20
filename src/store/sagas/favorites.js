@@ -1,7 +1,8 @@
 import api from 'services/api'
-import { call } from 'redux-saga/effects'
+import { call, put } from 'redux-saga/effects'
+import { addFavoriteSuccess } from 'store/actions/favorites'
 
 export function* addFavoriteRequest(action) {
   const res = yield call(api.get, `/repos/${action.payload.repoName}`)
-  console.tron.log(res)
+  yield put(addFavoriteSuccess(res.data))
 }
