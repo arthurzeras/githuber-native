@@ -1,17 +1,17 @@
 import api from 'services/api'
 import { call, put, select } from 'redux-saga/effects'
-import { addFavoriteSuccess, addFavoriteError } from 'store/actions/favorites'
+import { Creators as FavoritesCreators } from 'store/ducks/favorites'
 
 export function* addFavoriteRequest(action) {
   try {
     const res = yield call(api.get, `/repos/${action.payload.repoName}`)
     const favorites = yield select(state => state.favorites.data)
     if (favorites.find(favorite => favorite.id === res.data.id)) {
-      yield put(addFavoriteError('O repositório já foi adicionado aos favoritos'))
+      yield put(FavoritesCreators.addFavoriteError('O repositório já foi adicionado aos favoritos'))
     } else {
-      yield put(addFavoriteSuccess(res.data))
+      yield put(FavoritesCreators.addFavoriteSuccess(res.data))
     }
   } catch (err) {
-    yield put(addFavoriteError('Houve um problema ao tentar buscar o repositório, tente novamente'))
+    yield put(FavoritesCreators.addFavoriteError('Houve um problema ao tentar buscar o repositório, tente novamente'))
   }
 }

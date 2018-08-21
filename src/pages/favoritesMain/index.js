@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import * as FavoritesActions from 'store/actions/favorites'
+import { Creators as FavoritesActions } from 'store/ducks/favorites'
 import {
   View,
   Text,
