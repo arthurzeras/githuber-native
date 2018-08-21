@@ -83,7 +83,7 @@ class FavoritesMain extends Component {
             >
               {
                 this.props.favorites.loading
-                  ? <ActivityIndicator size="small" color="#ddd" />
+                  ? <ActivityIndicator size="small" color="#ddd"/>
                   : <Text style={styles.buttonText}>
                       <Icon name="plus" size={20} color="#fff"/>
                     </Text>
